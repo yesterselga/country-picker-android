@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 countryDialCode.setText(dialCode);
                 countryIcon.setImageResource(flagDrawableResID);
 
+                picker.dismiss();
+
             }
         });
 
