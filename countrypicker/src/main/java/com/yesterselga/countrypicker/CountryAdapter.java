@@ -16,10 +16,12 @@ public class CountryAdapter extends BaseAdapter {
     private Context mContext;
     List<Country> countries;
     LayoutInflater inflater;
+    Theme theme;
 
-    public CountryAdapter(Context context, List<Country> countries) {
+    public CountryAdapter(Context context, List<Country> countries, Theme theme) {
         this.mContext = context;
         this.countries = countries;
+        this.theme = theme;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -38,7 +40,11 @@ public class CountryAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         Country country = (Country)this.countries.get(position);
         if(view == null) {
-            view = this.inflater.inflate(layout.row, (ViewGroup)null);
+            if(theme.equals(Theme.DARK)){
+                view = this.inflater.inflate(layout.row_dark, (ViewGroup)null);
+            } else{
+                view = this.inflater.inflate(layout.row, (ViewGroup)null);
+            }
         }
 
         CountryAdapter.Cell cell = CountryAdapter.Cell.from(view);

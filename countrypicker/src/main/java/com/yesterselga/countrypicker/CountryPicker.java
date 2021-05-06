@@ -28,12 +28,13 @@ public class CountryPicker extends DialogFragment {
     List<Country> selectedCountriesList = new ArrayList<>();
     CountryPickerListener listener;
     Context context;
-    LinearLayout container;
+    private static Theme pickerTheme;
 
-    public static CountryPicker newInstance(String dialogTitle) {
+    public static CountryPicker newInstance(String dialogTitle, Theme theme) {
         CountryPicker picker = new CountryPicker();
         Bundle bundle = new Bundle();
         bundle.putString("dialogTitle", dialogTitle);
+        pickerTheme = theme;
         picker.setArguments(bundle);
         return picker;
     }
@@ -52,12 +53,16 @@ public class CountryPicker extends DialogFragment {
             int height = this.getResources().getDimensionPixelSize(dimen.cp_dialog_height);
             this.getDialog().getWindow().setLayout(width, height);
         }
-        this.container = view.findViewById(id.container);
+
+        if(pickerTheme.equals(Theme.DARK)){
+            view = inflater.inflate(layout.country_picker_dark, (ViewGroup)null);
+        }
+
         this.searchEditText = view.findViewById(id.country_code_picker_search);
         this.countryListView = view.findViewById(id.country_code_picker_listview);
         this.selectedCountriesList = new ArrayList(this.countriesList.size());
         this.selectedCountriesList.addAll(this.countriesList);
-        this.adapter = new CountryAdapter(this.getActivity(), this.selectedCountriesList);
+        this.adapter = new CountryAdapter(this.getActivity(), this.selectedCountriesList, pickerTheme);
         this.countryListView.setAdapter(this.adapter);
         this.countryListView.setOnItemClickListener((parent, view1, position, id) -> {
             if(CountryPicker.this.listener != null) {

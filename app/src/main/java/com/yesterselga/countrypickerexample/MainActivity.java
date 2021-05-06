@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.yesterselga.countrypicker.CountryPicker;
 import com.yesterselga.countrypicker.CountryPickerListener;
+import com.yesterselga.countrypicker.Theme;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,24 +21,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         buttonOpen = findViewById(R.id.buttonOpen);
-        picker = CountryPicker.newInstance("Select Country");  // dialog title
-        picker.setListener(new CountryPickerListener() {
-            @Override
-            public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
+        picker = CountryPicker.newInstance("Select Country", Theme.DARK);  // Set Dialog Title and Theme
+        picker.setListener((name, code, dialCode, flagDrawableResID) -> {
 
-                EditText countryCode = (EditText)findViewById(R.id.countryCode);
-                EditText countryName = (EditText)findViewById(R.id.countryName);
-                EditText countryDialCode = (EditText)findViewById(R.id.countryDialCode);
-                ImageView countryIcon = (ImageView)findViewById(R.id.countryIcon);
+            EditText countryCode = (EditText)findViewById(R.id.countryCode);
+            EditText countryName = (EditText)findViewById(R.id.countryName);
+            EditText countryDialCode = (EditText)findViewById(R.id.countryDialCode);
+            ImageView countryIcon = (ImageView)findViewById(R.id.countryIcon);
 
-                countryCode.setText(code);
-                countryName.setText(name);
-                countryDialCode.setText(dialCode);
-                countryIcon.setImageResource(flagDrawableResID);
+            countryCode.setText(code);
+            countryName.setText(name);
+            countryDialCode.setText(dialCode);
+            countryIcon.setImageResource(flagDrawableResID);
 
-                picker.dismiss();
+            picker.dismiss();
 
-            }
         });
 
         buttonOpen.setOnClickListener(new View.OnClickListener() {
