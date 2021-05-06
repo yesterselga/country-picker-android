@@ -1,4 +1,4 @@
-package com.ybs.countrypicker;
+package com.yesterselga.countrypicker;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,12 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
-import com.ybs.countrypicker.R.id;
-import com.ybs.countrypicker.R.layout;
-
-/**
- * Created by mispc1 on 8/29/17.
- */
+import com.yesterselga.countrypicker.R.id;
+import com.yesterselga.countrypicker.R.layout;
 
 public class CountryAdapter extends BaseAdapter {
 

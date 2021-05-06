@@ -1,24 +1,25 @@
-package com.ybs.countrypickerexample;
+package com.yesterselga.countrypickerexample;
 
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.ybs.countrypicker.CountryPicker;
-import com.ybs.countrypicker.CountryPickerListener;
+import androidx.appcompat.app.AppCompatActivity;
+import com.yesterselga.countrypicker.CountryPicker;
+import com.yesterselga.countrypicker.CountryPickerListener;
 
 public class MainActivity extends AppCompatActivity {
 
     CountryPicker picker;
+    Button buttonOpen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        buttonOpen = findViewById(R.id.buttonOpen);
         picker = CountryPicker.newInstance("Select Country");  // dialog title
         picker.setListener(new CountryPickerListener() {
             @Override
@@ -39,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-    }
-
-    public void openPicker(View view){
-        picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
+        buttonOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
+            }
+        });
     }
 
 }
