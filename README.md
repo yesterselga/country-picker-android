@@ -18,14 +18,14 @@ Step 2. Add the dependency
 
 ```gradle
 dependencies {
-    compile 'com.github.yesterselga:country-picker-android:1.0'
+    compile 'com.github.yesterselga:country-picker-android:2.0'
 }
 ```
 
 ## Usage
 
 ```java
-CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
+CountryPicker picker = CountryPicker.newInstance("Select Country", Theme.DARK);  // dialog title and theme
 picker.setListener(new CountryPickerListener() {
     @Override
     public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
