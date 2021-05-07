@@ -31,7 +31,7 @@ picker.setListener(new CountryPickerListener() {
     public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
         
         // Implement your code here
-        YOU_EDITTEXT.setText(dialCode);
+        YOU_EDITTEXT.setText(name);
         YOUR_IMAGE_VIEW.setImageResource(flagDrawableResID);
 
         picker.dismiss();
