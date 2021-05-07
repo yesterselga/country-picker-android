@@ -18,7 +18,7 @@ Step 2. Add the dependency
 
 ```gradle
 dependencies {
-    compile 'com.github.yesterselga:country-picker-android:2.0'
+    implementation 'com.github.yesterselga:country-picker-android:2.0'
 }
 ```
 
