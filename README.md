@@ -29,7 +29,12 @@ CountryPicker picker = CountryPicker.newInstance("Select Country", Theme.DARK); 
 picker.setListener(new CountryPickerListener() {
     @Override
     public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
+        
         // Implement your code here
+        YOU_EDITTEXT.setText(dialCode);
+        YOUR_IMAGE_VIEW.setImageResource(flagDrawableResID);
+
+        picker.dismiss();
     }
 });
 picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
